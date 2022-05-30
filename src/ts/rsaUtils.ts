@@ -72,6 +72,8 @@ const maskPayload = (payload: string, e : bigint, n: bigint, r : bigint) : bigin
 
     return encrypted;
 }
+
+
 const blindSignPayload = (
   payload: bigint,
   d: bigint,
@@ -84,7 +86,6 @@ const blindSignPayload = (
   );
   return encrypted;
 };
-
 
 
 const verifyBlindSign = (original : string, signed : bigint, d: bigint, n: bigint, r: bigint) : boolean => {
