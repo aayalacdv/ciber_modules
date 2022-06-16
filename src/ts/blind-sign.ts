@@ -5,7 +5,7 @@ import { decryptPayload, encryptPayload } from "./basic-RSA";
 
 export const PUBLIC_EXP: bigint = 65537n;
 
-const blindSignPayload = (
+export const blindSignPayload = (
     payload: bigint,
     d: bigint,
     n: bigint
@@ -24,7 +24,6 @@ const blindSignPayload = (
       const decrtypted = bigintCryptoUtils.modPow(signed * inverse, 1n,n)
       const originalMessage = encryptPayload(original, d, n); 
       const x = decryptPayload(originalMessage, PUBLIC_EXP, n);
-      console.log(x);
       if(originalMessage !== decrtypted) return false;
       return true;
   

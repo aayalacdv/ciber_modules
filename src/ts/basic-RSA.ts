@@ -1,3 +1,15 @@
+/**
+ * Module to compute RSA keys, encrypt and decrypt payloads  
+ * The default public modulous is the number 65537
+ *
+ * @remarks An example function that runs different code in Node and Browser javascript
+ *
+ * @param - The name to say hello to
+ *
+ * @returns Kpriv, Kpub to the user
+ */
+
+
 import * as bigintCryptoUtils from "bigint-crypto-utils";
 import * as bigintConversion from "bigint-conversion";
 
@@ -21,7 +33,7 @@ export const generateRSAPrivateParams = async (): Promise<{
     return (p - 1n) * (q - 1n);
   };
   
- export const computeRSAPublicKey = async (
+ const computeRSAPublicKey = async (
     eul: bigint,
     n: bigint
   ): Promise<{ e: bigint; n: bigint } | undefined> => {
@@ -30,7 +42,7 @@ export const generateRSAPrivateParams = async (): Promise<{
     return { e: PUBLIC_EXP, n: n };
   };
   
-export const computeRSAPrivateKey = async (
+const computeRSAPrivateKey = async (
     eul: bigint,
     n: bigint
   ): Promise<{ d: bigint; n: bigint } | undefined> => {
@@ -41,7 +53,7 @@ export const computeRSAPrivateKey = async (
       return undefined;
     }
   };
-  
+
   export const encryptPayload = (
     message: string,
     publicExp: bigint,
